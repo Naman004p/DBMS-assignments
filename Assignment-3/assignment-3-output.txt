@@ -1,0 +1,55 @@
+DBMS ASSIGNMENT 3 - OUTPUT
+===========================
+
+Sample HR data using Indian names.
+
+Q1
+Employees whose salary is outside the range 10000 to 15000 are displayed.
+
+Q2
+Employees from departments 30 and 100 are displayed.
+
+Q3
+Employees satisfying both salary and department conditions are displayed.
+
+Q4
++------------+-----------+------------+
+| first_name | last_name | hire_date  |
++------------+-----------+------------+
+| Diya       | Patel     | 1987-06-15 |
+| Ananya     | Shenoy    | 1987-08-12 |
+| Meera      | Shetty    | 1987-11-05 |
+| Abhichand  | Iyer      | 1987-02-14 |
++------------+-----------+------------+
+
+Q5
++------------+
+| first_name |
++------------+
+| Abhichand  |
++------------+
+
+Q6
+Employees with job IT_PROG or SH_CLERK, excluding salaries 4500, 10000 and 15000, are displayed.
+
+Q7
+Last names having exactly 6 characters are displayed.
+
+Q8
+Last names having 'e' as the third character are displayed.
+
+Q9
++----------+
+| job_id   |
++----------+
+| AD_ASST  |
+| IT_PROG  |
+| SA_REP   |
+| SH_CLERK |
++----------+
+
+Q10
+Employees are displayed with salary and PF (15%).
+
+Q11
+Empty set (0 rows) — none of the sample Indian last names match BLAKE, SCOTT, KING or FORD.
