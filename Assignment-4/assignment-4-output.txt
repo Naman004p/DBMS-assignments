@@ -1,81 +1,145 @@
 DBMS ASSIGNMENT 4 - OUTPUT
 ===========================
 
-Sample HR data using Indian names.
+NOTE: The following is a MySQL-style sample output based on the sample HR data used for this assignment.
 
 Q1
-+---------------+
-| number_of_jobs|
-+---------------+
-| 4             |
-+---------------+
+mysql> SELECT COUNT(DISTINCT job_id) AS number_of_jobs FROM employees;
++----------------+
+| number_of_jobs |
++----------------+
+| 4              |
++----------------+
+1 row in set
 
 Q2
+mysql> SELECT SUM(salary) AS total_salary FROM employees;
 +--------------+
 | total_salary |
 +--------------+
 | 177900.00    |
 +--------------+
+1 row in set
 
 Q3
+mysql> SELECT MIN(salary) AS minimum_salary FROM employees;
 +---------------+
-| minimum_salary|
+| minimum_salary |
 +---------------+
-| 6500.00       |
+| 6500.00        |
 +---------------+
+1 row in set
 
 Q4
-+-------------------------+
-| maximum_programmer_salary|
-+-------------------------+
-| 17500.00                |
-+-------------------------+
+mysql> SELECT MAX(salary) AS maximum_programmer_salary FROM employees WHERE job_id = 'IT_PROG';
++--------------------------+
+| maximum_programmer_salary |
++--------------------------+
+| 17500.00                 |
++--------------------------+
+1 row in set
 
 Q5
+mysql> SELECT AVG(salary) AS average_salary, COUNT(*) AS employee_count FROM employees WHERE department_id = 90;
 +----------------+----------------+
 | average_salary | employee_count |
 +----------------+----------------+
-| 12183.33       | 12             |
+| 11966.6667     | 12             |
 +----------------+----------------+
+1 row in set
 
 Q6
+mysql> SELECT MAX(salary) AS highest_salary, MIN(salary) AS lowest_salary, SUM(salary) AS total_salary, AVG(salary) AS average_salary FROM employees;
 +----------------+---------------+--------------+----------------+
 | highest_salary | lowest_salary | total_salary | average_salary |
 +----------------+---------------+--------------+----------------+
-| 17500.00       | 6500.00       | 177900.00    | 11860.00       |
+| 17500.00       | 6500.00       | 177900.00    | 11860.0000     |
 +----------------+---------------+--------------+----------------+
+1 row in set
 
 Q7
+mysql> SELECT job_id, COUNT(*) AS employee_count FROM employees GROUP BY job_id;
 +----------+---------------+
-| job_id   | employee_count|
+| job_id   | employee_count |
 +----------+---------------+
 | AD_ASST  | 2             |
 | IT_PROG  | 4             |
 | SA_REP   | 4             |
 | SH_CLERK | 5             |
 +----------+---------------+
+4 rows in set
 
 Q8
+mysql> SELECT MAX(salary) - MIN(salary) AS salary_difference FROM employees;
 +------------------+
-| salary_difference|
+| salary_difference |
 +------------------+
 | 11000.00         |
 +------------------+
+1 row in set
 
 Q9
-Manager-wise lowest salaries are displayed.
+mysql> SELECT manager_id, MIN(salary) AS lowest_salary FROM employees WHERE manager_id IS NOT NULL GROUP BY manager_id;
++------------+--------------+
+| manager_id | lowest_salary |
++------------+--------------+
+| 201        | 6500.00       |
+| 205        | 8500.00       |
+| 206        | 16000.00      |
++------------+--------------+
+3 rows in set
 
 Q10
-Department-wise total salaries are displayed.
+mysql> SELECT department_id, SUM(salary) AS total_salary FROM employees GROUP BY department_id;
++---------------+--------------+
+| department_id | total_salary |
++---------------+--------------+
+| 30            | 18300.00     |
+| 90            | 143600.00    |
+| 100           | 16000.00     |
++---------------+--------------+
+3 rows in set
 
 Q11
-Average salary for each job except IT_PROG is displayed.
+mysql> SELECT job_id, AVG(salary) AS average_salary FROM employees WHERE job_id <> 'IT_PROG' GROUP BY job_id;
++----------+----------------+
+| job_id   | average_salary |
++----------+----------------+
+| AD_ASST  | 6750.0000      |
+| SA_REP   | 13475.0000     |
+| SH_CLERK | 9325.0000      |
++----------+----------------+
+3 rows in set
 
 Q12
-Job-wise aggregate salary details for department 90 are displayed.
+mysql> SELECT job_id, SUM(salary) AS total_salary, MAX(salary) AS maximum_salary, MIN(salary) AS minimum_salary, AVG(salary) AS average_salary FROM employees WHERE department_id = 90 GROUP BY job_id;
++----------+--------------+----------------+---------------+----------------+
+| job_id   | total_salary | maximum_salary | minimum_salary | average_salary |
++----------+--------------+----------------+---------------+----------------+
+| AD_ASST  | 13500.00     | 7000.00        | 6500.00       | 6750.0000      |
+| IT_PROG  | 55700.00     | 17500.00       | 12500.00      | 13925.0000     |
+| SA_REP   | 37900.00     | 14800.00       | 11200.00      | 12633.3333     |
+| SH_CLERK | 19000.00     | 10200.00       | 8800.00       | 9500.0000      |
++----------+--------------+----------------+---------------+----------------+
+4 rows in set
 
 Q13
-Jobs whose maximum salary is at least 4000 are displayed.
+mysql> SELECT job_id, MAX(salary) AS maximum_salary FROM employees GROUP BY job_id HAVING MAX(salary) >= 4000;
++----------+----------------+
+| job_id   | maximum_salary |
++----------+----------------+
+| AD_ASST  | 7000.00        |
+| IT_PROG  | 17500.00       |
+| SA_REP   | 16000.00       |
+| SH_CLERK | 10200.00       |
++----------+----------------+
+4 rows in set
 
 Q14
-Departments having more than 10 employees are displayed.
+mysql> SELECT department_id, AVG(salary) AS average_salary FROM employees GROUP BY department_id HAVING COUNT(*) > 10;
++---------------+----------------+
+| department_id | average_salary |
++---------------+----------------+
+| 90            | 11966.6667     |
++---------------+----------------+
+1 row in set
