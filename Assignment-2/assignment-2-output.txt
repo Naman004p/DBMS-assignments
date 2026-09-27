@@ -1,0 +1,109 @@
+DBMS ASSIGNMENT 2 - OUTPUT
+===========================
+
+Sample HR data using Indian names.
+
+Q1
++------------+-----------+
+| First Name | Last Name |
++------------+-----------+
+| Aarav      | Sharma    |
+| Abhichand  | Iyer      |
+| Ananya     | Shenoy    |
+| Arjun      | Nair      |
+| Diya       | Patel     |
+| Ishita     | Sharma    |
+| Kabir      | Joshi     |
+| Karan      | Kohli     |
+| Meera      | Shetty    |
+| Neha       | Chopra    |
+| Priya      | Bansal    |
+| Rahul      | Verma     |
+| Rohan      | Mehta     |
+| Sneha      | Reddy     |
+| Vivek      | Gupta     |
++------------+-----------+
+
+Q2
++---------------+
+| department_id |
++---------------+
+| 30            |
+| 90            |
+| 100           |
++---------------+
+
+Q3
+Employees are displayed in descending order of first_name.
+
+Q4
+Employees are displayed with salary and PF (15%).
+
+Q5
+Employees are displayed in ascending order of salary.
+
+Q6
++--------------+
+| total_salary |
++--------------+
+| 177900.00    |
++--------------+
+
+Q7
++----------------+----------------+
+| maximum_salary | minimum_salary |
++----------------+----------------+
+| 17500.00       | 6500.00        |
++----------------+----------------+
+
+Q8
++----------------+----------------+
+| average_salary | employee_count |
++----------------+----------------+
+| 11860.00       | 15             |
++----------------+----------------+
+
+Q9
++---------------------+
+| number_of_employees |
++---------------------+
+| 15                  |
++---------------------+
+
+Q10
++---------------+
+| number_of_jobs|
++---------------+
+| 4             |
++---------------+
+
+Q11
+First names are displayed in uppercase.
+
+Q12
+The first three characters of each first name are displayed.
+
+Q13
++--------+
+| result |
++--------+
+| 37219  |
++--------+
+
+Q14
+Employee first and last names are displayed as one concatenated name.
+
+Q15
+First names are displayed after applying TRIM().
+
+Q16
+Employee names are displayed with their character length.
+
+Q17
+Empty set (0 rows)
+
+Q18
+The first 10 employee records are displayed.
+
+Q19
+Employee names are displayed with monthly salary rounded to 2 decimal places.
