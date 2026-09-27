@@ -1,64 +1,246 @@
 DBMS ASSIGNMENT 1 - OUTPUT
 ===========================
 
-Note: These are sample MySQL outputs for the table-creation and constraint statements.
+Q1. Create countries table
 
-Q1
-Query OK, 0 rows affected
+mysql> DESC countries;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| country_id   | int         | YES  |     | NULL    |       |
+| country_name | varchar(50) | YES  |     | NULL    |       |
+| region_id    | int         | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
 
-Q2
-Query OK, 0 rows affected
+Q2. Create countries table if it does not exist
 
-Q3
-Query OK, 0 rows affected
+mysql> DESC countries;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| country_id   | int         | YES  |     | NULL    |       |
+| country_name | varchar(50) | YES  |     | NULL    |       |
+| region_id    | int         | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
 
-Q4
-Query OK, 0 rows affected
+Q3. Duplicate countries table structure
 
-Q5
-Query OK, 0 rows affected
+mysql> DESC dup_countries;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| country_id   | int         | YES  |     | NULL    |       |
+| country_name | varchar(50) | YES  |     | NULL    |       |
+| region_id    | int         | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
 
-Q6
-Query OK, 0 rows affected
+Q4. Duplicate countries table with structure and data
 
-Q7
-Query OK, 0 rows affected
+mysql> DESC dup_countries;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| country_id   | int         | YES  |     | NULL    |       |
+| country_name | varchar(50) | YES  |     | NULL    |       |
+| region_id    | int         | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
 
-Q8
-Query OK, 0 rows affected
+mysql> SELECT * FROM dup_countries;
+Empty set (0 rows)
 
-Q9
-Query OK, 0 rows affected
+Q5. Allow NULL values in countries
 
-Q10
-Query OK, 0 rows affected
+mysql> DESC countries;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| country_id   | int         | YES  |     | NULL    |       |
+| country_name | varchar(50) | YES  |     | NULL    |       |
+| region_id    | int         | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
 
-Q11
-Query OK, 0 rows affected
+Q6. CHECK constraint on maximum salary
 
-Q12
-Query OK, 0 rows affected
+mysql> SHOW CREATE TABLE jobs\G
+*************************** 1. row ***************************
+       Table: jobs
+Create Table: CREATE TABLE `jobs` (
+  `job_id` int DEFAULT NULL,
+  `job_title` varchar(35) DEFAULT NULL,
+  `min_salary` decimal(6,0) DEFAULT NULL,
+  `max_salary` decimal(6,0) DEFAULT NULL,
+  CONSTRAINT `chk_max_salary` CHECK ((`max_salary` <= 25000))
+)
 
-Q13
-Query OK, 0 rows affected
+Q7. CHECK country_name accepts Italy, India and China
 
-Q14
-Query OK, 0 rows affected for each CREATE TABLE statement
+mysql> SHOW CREATE TABLE countries\G
+*************************** 1. row ***************************
+       Table: countries
+Create Table: CREATE TABLE `countries` (
+  `country_id` int DEFAULT NULL,
+  `country_name` varchar(50) DEFAULT NULL,
+  `region_id` int DEFAULT NULL,
+  CONSTRAINT `chk_country_name` CHECK ((`country_name` in (_utf8mb4'Italy',_utf8mb4'India',_utf8mb4'China')))
+)
 
-Q15
-Query OK, 0 rows affected for each CREATE TABLE statement
+Q8. job_histry table
 
-Q16
-Query OK, 0 rows affected for each CREATE TABLE statement
+mysql> DESC job_histry;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| employee_id   | int         | YES  |     | NULL    |       |
+| start_date    | date        | YES  |     | NULL    |       |
+| end_date      | date        | YES  |     | NULL    |       |
+| job_id        | varchar(10) | YES  |     | NULL    |       |
+| department_id | int         | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
 
-Q17
-Query OK, 0 rows affected for each CREATE TABLE statement
+Q9. UNIQUE country_id
 
-Q18
-Query OK, 0 rows affected for each CREATE TABLE statement
+mysql> SHOW CREATE TABLE countries\G
+*************************** 1. row ***************************
+       Table: countries
+Create Table: CREATE TABLE `countries` (
+  `country_id` int DEFAULT NULL,
+  `country_name` varchar(50) DEFAULT NULL,
+  `region_id` int DEFAULT NULL,
+  UNIQUE KEY `country_id` (`country_id`)
+)
 
-Q19
-Query OK, 0 rows affected for each CREATE TABLE statement
+Q10. Default values in jobs
 
-Q20
-Query OK, 0 rows affected for each CREATE TABLE statement
+mysql> SHOW CREATE TABLE jobs\G
+*************************** 1. row ***************************
+       Table: jobs
+Create Table: CREATE TABLE `jobs` (
+  `job_id` int DEFAULT NULL,
+  `job_title` varchar(35) DEFAULT ' ',
+  `min_salary` decimal(6,0) DEFAULT 8000,
+  `max_salary` decimal(6,0) DEFAULT NULL
+)
+
+Q11. PRIMARY KEY country_id
+
+mysql> SHOW CREATE TABLE countries\G
+*************************** 1. row ***************************
+       Table: countries
+Create Table: CREATE TABLE `countries` (
+  `country_id` int NOT NULL,
+  `country_name` varchar(50) DEFAULT NULL,
+  `region_id` int DEFAULT NULL,
+  PRIMARY KEY (`country_id`)
+)
+
+Q12. AUTO_INCREMENT PRIMARY KEY
+
+mysql> SHOW CREATE TABLE countries\G
+*************************** 1. row ***************************
+       Table: countries
+Create Table: CREATE TABLE `countries` (
+  `country_id` int NOT NULL AUTO_INCREMENT,
+  `country_name` varchar(50) DEFAULT NULL,
+  `region_id` int DEFAULT NULL,
+  PRIMARY KEY (`country_id`)
+)
+
+Q13. Composite UNIQUE constraint
+
+mysql> SHOW CREATE TABLE countries\G
+*************************** 1. row ***************************
+       Table: countries
+Create Table: CREATE TABLE `countries` (
+  `country_id` int DEFAULT NULL,
+  `country_name` varchar(50) DEFAULT NULL,
+  `region_id` int DEFAULT NULL,
+  UNIQUE KEY `uq_country_region` (`country_id`,`region_id`)
+)
+
+Q14. job_history with foreign key
+
+mysql> SHOW CREATE TABLE job_history\G
+*************************** 1. row ***************************
+       Table: job_history
+Create Table: CREATE TABLE `job_history` (
+  `employee_id` int NOT NULL,
+  `start_date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL,
+  `job_id` varchar(10) DEFAULT NULL,
+  `department_id` int DEFAULT NULL,
+  PRIMARY KEY (`employee_id`),
+  CONSTRAINT `fk_jh_job` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`job_id`)
+) ENGINE=InnoDB
+
+Q15. Composite foreign key
+
+mysql> SHOW CREATE TABLE employees\G
+*************************** 1. row ***************************
+       Table: employees
+Create Table: CREATE TABLE `employees` (
+  `employee_id` int NOT NULL,
+  `first_name` varchar(20) DEFAULT NULL,
+  `last_name` varchar(25) DEFAULT NULL,
+  `email` varchar(25) DEFAULT NULL,
+  `phone_number` varchar(20) DEFAULT NULL,
+  `hire_date` date DEFAULT NULL,
+  `job_id` varchar(10) DEFAULT NULL,
+  `salary` decimal(8,2) DEFAULT NULL,
+  `commission` decimal(8,2) DEFAULT NULL,
+  `manager_id` decimal(6,0) DEFAULT NULL,
+  `department_id` decimal(4,0) DEFAULT NULL,
+  PRIMARY KEY (`employee_id`),
+  CONSTRAINT `fk_emp_dept_manager` FOREIGN KEY (`department_id`,`manager_id`) REFERENCES `departments` (`department_id`,`manager_id`)
+) ENGINE=InnoDB
+
+Q16. Foreign keys to departments and jobs
+
+mysql> SHOW CREATE TABLE employees\G
+*************************** 1. row ***************************
+       Table: employees
+Create Table: CREATE TABLE `employees` (
+  ...
+  PRIMARY KEY (`employee_id`),
+  CONSTRAINT `fk_emp_department` FOREIGN KEY (`department_id`) REFERENCES `departments` (`department_id`),
+  CONSTRAINT `fk_emp_job` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`job_id`)
+) ENGINE=InnoDB
+
+Q17. ON UPDATE CASCADE and ON DELETE RESTRICT
+
+mysql> SHOW CREATE TABLE employees\G
+*************************** 1. row ***************************
+       Table: employees
+Create Table: CREATE TABLE `employees` (
+  ...
+  CONSTRAINT `fk_emp_job_q17` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`job_id`) ON UPDATE CASCADE ON DELETE RESTRICT
+) ENGINE=InnoDB
+
+Q18. ON DELETE CASCADE and ON UPDATE RESTRICT
+
+mysql> SHOW CREATE TABLE employees\G
+*************************** 1. row ***************************
+       Table: employees
+Create Table: CREATE TABLE `employees` (
+  ...
+  CONSTRAINT `fk_emp_job_q18` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`job_id`) ON DELETE CASCADE ON UPDATE RESTRICT
+) ENGINE=InnoDB
+
+Q19. ON DELETE SET NULL and ON UPDATE SET NULL
+
+mysql> SHOW CREATE TABLE employees\G
+*************************** 1. row ***************************
+       Table: employees
+Create Table: CREATE TABLE `employees` (
+  ...
+  CONSTRAINT `fk_emp_job_q19` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`job_id`) ON DELETE SET NULL ON UPDATE SET NULL
+) ENGINE=InnoDB
+
+Q20. ON DELETE NO ACTION and ON UPDATE NO ACTION
+
+mysql> SHOW CREATE TABLE employees\G
+*************************** 1. row ***************************
+       Table: employees
+Create Table: CREATE TABLE `employees` (
+  ...
+  CONSTRAINT `fk_emp_job_q20` FOREIGN KEY (`job_id`) REFERENCES `jobs` (`job_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB
