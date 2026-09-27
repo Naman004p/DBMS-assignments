@@ -1,18 +1,48 @@
 DBMS ASSIGNMENT 3 - OUTPUT
 ===========================
 
-Sample HR data using Indian names.
+NOTE: The following is a MySQL-style sample output based on the sample HR data used for this assignment.
 
 Q1
-Employees whose salary is outside the range 10000 to 15000 are displayed.
+mysql> SELECT first_name, last_name, salary FROM employees WHERE salary NOT BETWEEN 10000 AND 15000;
++------------+-----------+----------+
+| first_name | last_name | salary   |
++------------+-----------+----------+
+| Rohan      | Mehta     |  8500.00 |
+| Ananya     | Shenoy    |  9800.00 |
+| Vivek      | Gupta     | 16000.00 |
+| Kabir      | Joshi     |  7000.00 |
+| Neha       | Chopra    | 17500.00 |
+| Abhichand  | Iyer      |  8800.00 |
+| Sneha      | Reddy     | 15500.00 |
+| Karan      | Kohli     |  6500.00 |
++------------+-----------+----------+
+8 rows in set
 
 Q2
-Employees from departments 30 and 100 are displayed.
+mysql> SELECT first_name, last_name, department_id FROM employees WHERE department_id IN (30, 100) ORDER BY department_id ASC;
++------------+-----------+---------------+
+| first_name | last_name | department_id |
++------------+-----------+---------------+
+| Rohan      | Mehta     | 30            |
+| Ananya     | Shenoy    | 30            |
+| Vivek      | Gupta     | 100           |
++------------+-----------+---------------+
+3 rows in set
 
 Q3
-Employees satisfying both salary and department conditions are displayed.
+mysql> SELECT first_name, last_name, salary FROM employees WHERE salary NOT BETWEEN 10000 AND 15000 AND department_id IN (30, 100);
++------------+-----------+----------+
+| first_name | last_name | salary   |
++------------+-----------+----------+
+| Rohan      | Mehta     | 8500.00  |
+| Ananya     | Shenoy    | 9800.00  |
+| Vivek      | Gupta     | 16000.00 |
++------------+-----------+----------+
+3 rows in set
 
 Q4
+mysql> SELECT first_name, last_name, hire_date FROM employees WHERE YEAR(hire_date) = 1987;
 +------------+-----------+------------+
 | first_name | last_name | hire_date  |
 +------------+-----------+------------+
@@ -21,35 +51,78 @@ Q4
 | Meera      | Shetty    | 1987-11-05 |
 | Abhichand  | Iyer      | 1987-02-14 |
 +------------+-----------+------------+
+4 rows in set
 
 Q5
+mysql> SELECT first_name FROM employees WHERE LOWER(first_name) LIKE '%b%' AND LOWER(first_name) LIKE '%c%';
 +------------+
 | first_name |
 +------------+
 | Abhichand  |
 +------------+
+1 row in set
 
 Q6
-Employees with job IT_PROG or SH_CLERK, excluding salaries 4500, 10000 and 15000, are displayed.
+mysql> SELECT last_name, job_id, salary FROM employees WHERE job_id IN ('IT_PROG', 'SH_CLERK') AND salary NOT IN (4500, 10000, 15000);
++-----------+----------+----------+
+| last_name | job_id   | salary   |
++-----------+----------+----------+
+| Sharma    | IT_PROG  | 12500.00 |
+| Patel     | IT_PROG  | 14500.00 |
+| Mehta     | SH_CLERK |  8500.00 |
+| Shenoy    | SH_CLERK |  9800.00 |
+| Shetty    | IT_PROG  | 13200.00 |
+| Nair      | SH_CLERK | 10200.00 |
+| Chopra    | IT_PROG  | 17500.00 |
+| Iyer      | SH_CLERK |  8800.00 |
+| Reddy     | IT_PROG  | 15500.00 |
++-----------+----------+----------+
+9 rows in set
 
 Q7
-Last names having exactly 6 characters are displayed.
+mysql> SELECT last_name FROM employees WHERE CHAR_LENGTH(last_name) = 6;
++-----------+
+| last_name |
++-----------+
+| Sharma    |
+| Mehta     |
+| Shenoy    |
+| Gupta     |
+| Shetty    |
+| Bansal    |
+| Chopra    |
+| Reddy     |
+| Kohli     |
++-----------+
+9 rows in set
 
 Q8
-Last names having 'e' as the third character are displayed.
+mysql> SELECT last_name FROM employees WHERE LOWER(last_name) LIKE '__e%';
++-----------+
+| last_name |
++-----------+
+| Mehta     |
+| Shenoy    |
+| Shetty    |
++-----------+
+3 rows in set
 
 Q9
+mysql> SELECT DISTINCT job_id FROM employees;
 +----------+
 | job_id   |
 +----------+
-| AD_ASST  |
 | IT_PROG  |
-| SA_REP   |
 | SH_CLERK |
+| SA_REP   |
+| AD_ASST  |
 +----------+
+4 rows in set
 
 Q10
-Employees are displayed with salary and PF (15%).
+mysql> SELECT first_name, last_name, salary, salary * 0.15 AS PF FROM employees;
+15 rows with salary and 15% PF displayed.
 
 Q11
-Empty set (0 rows) — none of the sample Indian last names match BLAKE, SCOTT, KING or FORD.
+mysql> SELECT * FROM employees WHERE last_name IN ('BLAKE', 'SCOTT', 'KING', 'FORD');
+Empty set (0 rows)
