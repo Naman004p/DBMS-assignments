@@ -1,0 +1,64 @@
+DBMS ASSIGNMENT 1 - OUTPUT
+===========================
+
+Note: These are sample MySQL outputs for the table-creation and constraint statements.
+
+Q1
+Query OK, 0 rows affected
+
+Q2
+Query OK, 0 rows affected
+
+Q3
+Query OK, 0 rows affected
+
+Q4
+Query OK, 0 rows affected
+
+Q5
+Query OK, 0 rows affected
+
+Q6
+Query OK, 0 rows affected
+
+Q7
+Query OK, 0 rows affected
+
+Q8
+Query OK, 0 rows affected
+
+Q9
+Query OK, 0 rows affected
+
+Q10
+Query OK, 0 rows affected
+
+Q11
+Query OK, 0 rows affected
+
+Q12
+Query OK, 0 rows affected
+
+Q13
+Query OK, 0 rows affected
+
+Q14
+Query OK, 0 rows affected for each CREATE TABLE statement
+
+Q15
+Query OK, 0 rows affected for each CREATE TABLE statement
+
+Q16
+Query OK, 0 rows affected for each CREATE TABLE statement
+
+Q17
+Query OK, 0 rows affected for each CREATE TABLE statement
+
+Q18
+Query OK, 0 rows affected for each CREATE TABLE statement
+
+Q19
+Query OK, 0 rows affected for each CREATE TABLE statement
+
+Q20
+Query OK, 0 rows affected for each CREATE TABLE statement
