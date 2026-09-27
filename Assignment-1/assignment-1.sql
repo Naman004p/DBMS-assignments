@@ -1,6 +1,5 @@
 -- DBMS Assignment 1
 -- MySQL / Table Creation, Constraints and Foreign Keys
--- Each solution is followed by the expected MySQL execution output.
 
 -- Q1
 DROP TABLE IF EXISTS countries;
@@ -9,7 +8,6 @@ CREATE TABLE countries (
     country_name VARCHAR(50),
     region_id INT
 );
--- OUTPUT: Query OK, 0 rows affected (table created successfully).
 
 -- Q2
 DROP TABLE IF EXISTS countries;
@@ -18,17 +16,14 @@ CREATE TABLE IF NOT EXISTS countries (
     country_name VARCHAR(50),
     region_id INT
 );
--- OUTPUT: Query OK, 0 rows affected (table created successfully).
 
 -- Q3
 DROP TABLE IF EXISTS dup_countries;
 CREATE TABLE dup_countries LIKE countries;
--- OUTPUT: Query OK, 0 rows affected (duplicate table structure created).
 
 -- Q4
 DROP TABLE IF EXISTS dup_countries;
 CREATE TABLE dup_countries AS SELECT * FROM countries;
--- OUTPUT: Query OK, 0 rows affected (duplicate table created with selected data).
 
 -- Q5
 DROP TABLE IF EXISTS countries;
@@ -37,7 +32,6 @@ CREATE TABLE countries (
     country_name VARCHAR(50) NULL,
     region_id INT NULL
 );
--- OUTPUT: Query OK, 0 rows affected.
 
 -- Q6
 DROP TABLE IF EXISTS jobs;
@@ -48,7 +42,6 @@ CREATE TABLE jobs (
     max_salary DECIMAL(6,0),
     CONSTRAINT chk_max_salary CHECK (max_salary <= 25000)
 );
--- OUTPUT: Query OK, 0 rows affected.
 
 -- Q7
 DROP TABLE IF EXISTS countries;
@@ -58,7 +51,6 @@ CREATE TABLE countries (
     region_id INT,
     CONSTRAINT chk_country_name CHECK (country_name IN ('Italy','India','China'))
 );
--- OUTPUT: Query OK, 0 rows affected.
 
 -- Q8
 DROP TABLE IF EXISTS job_histry;
@@ -70,7 +62,6 @@ CREATE TABLE job_histry (
     department_id INT,
     CONSTRAINT chk_end_date CHECK (end_date IS NULL OR DATE_FORMAT(end_date, '%d/%m/%Y') IS NOT NULL)
 );
--- OUTPUT: Query OK, 0 rows affected.
 
 -- Q9
 DROP TABLE IF EXISTS countries;
@@ -79,7 +70,6 @@ CREATE TABLE countries (
     country_name VARCHAR(50),
     region_id INT
 );
--- OUTPUT: Query OK, 0 rows affected.
 
 -- Q10
 DROP TABLE IF EXISTS jobs;
@@ -89,7 +79,6 @@ CREATE TABLE jobs (
     min_salary DECIMAL(6,0) DEFAULT 8000,
     max_salary DECIMAL(6,0) DEFAULT NULL
 );
--- OUTPUT: Query OK, 0 rows affected.
 
 -- Q11
 DROP TABLE IF EXISTS countries;
@@ -98,7 +87,6 @@ CREATE TABLE countries (
     country_name VARCHAR(50),
     region_id INT
 );
--- OUTPUT: Query OK, 0 rows affected.
 
 -- Q12
 DROP TABLE IF EXISTS countries;
@@ -107,7 +95,6 @@ CREATE TABLE countries (
     country_name VARCHAR(50),
     region_id INT
 );
--- OUTPUT: Query OK, 0 rows affected.
 
 -- Q13
 DROP TABLE IF EXISTS countries;
@@ -117,7 +104,6 @@ CREATE TABLE countries (
     region_id INT,
     CONSTRAINT uq_country_region UNIQUE (country_id, region_id)
 );
--- OUTPUT: Query OK, 0 rows affected.
 
 -- Q14
 DROP TABLE IF EXISTS job_history;
@@ -136,7 +122,6 @@ CREATE TABLE job_history (
     department_id INT,
     CONSTRAINT fk_jh_job FOREIGN KEY (job_id) REFERENCES jobs(job_id)
 ) ENGINE=InnoDB;
--- OUTPUT: Query OK, 0 rows affected for each CREATE TABLE statement.
 
 -- Q15
 DROP TABLE IF EXISTS employees;
@@ -164,7 +149,6 @@ CREATE TABLE employees (
         FOREIGN KEY (department_id, manager_id)
         REFERENCES departments(department_id, manager_id)
 ) ENGINE=InnoDB;
--- OUTPUT: Query OK, 0 rows affected for each CREATE TABLE statement.
 
 -- Q16
 DROP TABLE IF EXISTS employees;
@@ -197,7 +181,6 @@ CREATE TABLE employees (
     CONSTRAINT fk_emp_department FOREIGN KEY (department_id) REFERENCES departments(department_id),
     CONSTRAINT fk_emp_job FOREIGN KEY (job_id) REFERENCES jobs(job_id)
 ) ENGINE=InnoDB;
--- OUTPUT: Query OK, 0 rows affected for each CREATE TABLE statement.
 
 -- Q17
 DROP TABLE IF EXISTS employees;
@@ -219,7 +202,6 @@ CREATE TABLE employees (
         ON UPDATE CASCADE
         ON DELETE RESTRICT
 ) ENGINE=InnoDB;
--- OUTPUT: Query OK, 0 rows affected for each CREATE TABLE statement.
 
 -- Q18
 DROP TABLE IF EXISTS employees;
@@ -241,7 +223,6 @@ CREATE TABLE employees (
         ON DELETE CASCADE
         ON UPDATE RESTRICT
 ) ENGINE=InnoDB;
--- OUTPUT: Query OK, 0 rows affected for each CREATE TABLE statement.
 
 -- Q19
 DROP TABLE IF EXISTS employees;
@@ -263,7 +244,6 @@ CREATE TABLE employees (
         ON DELETE SET NULL
         ON UPDATE SET NULL
 ) ENGINE=InnoDB;
--- OUTPUT: Query OK, 0 rows affected for each CREATE TABLE statement.
 
 -- Q20
 DROP TABLE IF EXISTS employees;
@@ -285,4 +265,3 @@ CREATE TABLE employees (
         ON DELETE NO ACTION
         ON UPDATE NO ACTION
 ) ENGINE=InnoDB;
--- OUTPUT: Query OK, 0 rows affected for each CREATE TABLE statement.
