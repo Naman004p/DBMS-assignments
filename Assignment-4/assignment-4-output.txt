@@ -1,0 +1,81 @@
+DBMS ASSIGNMENT 4 - OUTPUT
+===========================
+
+Sample HR data using Indian names.
+
+Q1
++---------------+
+| number_of_jobs|
++---------------+
+| 4             |
++---------------+
+
+Q2
++--------------+
+| total_salary |
++--------------+
+| 177900.00    |
++--------------+
+
+Q3
++---------------+
+| minimum_salary|
++---------------+
+| 6500.00       |
++---------------+
+
+Q4
++-------------------------+
+| maximum_programmer_salary|
++-------------------------+
+| 17500.00                |
++-------------------------+
+
+Q5
++----------------+----------------+
+| average_salary | employee_count |
++----------------+----------------+
+| 12183.33       | 12             |
++----------------+----------------+
+
+Q6
++----------------+---------------+--------------+----------------+
+| highest_salary | lowest_salary | total_salary | average_salary |
++----------------+---------------+--------------+----------------+
+| 17500.00       | 6500.00       | 177900.00    | 11860.00       |
++----------------+---------------+--------------+----------------+
+
+Q7
++----------+---------------+
+| job_id   | employee_count|
++----------+---------------+
+| AD_ASST  | 2             |
+| IT_PROG  | 4             |
+| SA_REP   | 4             |
+| SH_CLERK | 5             |
++----------+---------------+
+
+Q8
++------------------+
+| salary_difference|
++------------------+
+| 11000.00         |
++------------------+
+
+Q9
+Manager-wise lowest salaries are displayed.
+
+Q10
+Department-wise total salaries are displayed.
+
+Q11
+Average salary for each job except IT_PROG is displayed.
+
+Q12
+Job-wise aggregate salary details for department 90 are displayed.
+
+Q13
+Jobs whose maximum salary is at least 4000 are displayed.
+
+Q14
+Departments having more than 10 employees are displayed.
